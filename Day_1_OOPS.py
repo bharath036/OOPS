@@ -16,7 +16,9 @@ print(a)
 object_2 = {}
 a=isinstance(object_2,Student)
 print(a)
+'''
 
+'''
 OUTPUT:
 <class 'type'>
 <class '__main__.Student'>
