@@ -187,6 +187,7 @@ class Person:
     pass 
 
 print(Person.class_name)
+print("Hi")
 
 '''
 Python provides several built-in decorators that are commonly used in class definitions.
