@@ -132,7 +132,7 @@ You can pass multiple functions and apply them in order.
 Using lists of functions allows for more flexibility.
 
 '''
-#Learn about closure functions
+#Learn about closure functions??
 
 '''
 First-class function is a concept where functions are treated as first-class citizens.
@@ -203,14 +203,14 @@ If we keep static method keyword to a method in class.., without creating instan
 
 There can be some functionality that relates to the class, but does not require any instance(s) to do some work, 
 static methods can be used in such cases. A static method is a method which is bound to the class and not the object of 
-the class. It can’t access or modify class state. It is present in a class because it makes sense for the method to be present 
+the class. It can't access or modify class state. It is present in a class because it makes sense for the method to be present 
 in class. A static method does not receive an implicit first argument.
 
 The @staticmethod decorator in Python is used to define a method inside a class that does not depend on
 the instance (self) or class (cls). It behaves like a normal function, but it is part of the class for 
 organizational purposes.
 
-Both below codes works but wothout static method the below code cannot be
+Both below codes works but without static method the below code cannot be
 overidden in subclasses
 
 Without @staticmethod: Works, but is unclear and not best practice.
@@ -411,13 +411,158 @@ A @staticmethod to validate account numbers.
 🎯 Mini Project:
 ☑ Employee Payroll System - Use class methods to apply salary increment.
 '''
+'''
+# Why do we use self.balance instead of just balance?
+#
+# The 'self' keyword refers to the specific instance of the class.
+# 
+# When we write 'self.balance', we are creating or accessing the instance variable 
+# that belongs to that particular BankAccount object.
+#
+# If we use just 'balance' without 'self', it is treated as a local variable 
+# inside the method or constructor. It will not be stored within the object and 
+# won't persist after the method ends.
+#
+# Using 'self.balance' ensures that each object maintains its own separate balance 
+# and the data stays tied to that specific instance.
+#
+# Example:
+# acc1 = BankAccount(1000) → acc1.balance = 1000
+# acc2 = BankAccount(2000) → acc2.balance = 2000
+# Both objects have independent balances because of 'self.balance'.
 
+I passed balance as argument in get_balance will be error.., see it
+'''
+'''
 class BankAccount:
     def __init__(self,balance):
-        self.balance = balance 
+        self.balance = balance
 
-    def deposit(self,):
-        pass
+    def get_balance(self):
+        return f"balance is : {self.balance}"
 
-    def withdraw(self):
-        pass  
+    def deposit(self,add):
+        self.balance = self.balance + add 
+
+    def withdraw(self, sub):
+        self.balance = self.balance - sub 
+
+obj1 = BankAccount(1000)
+print(obj1.get_balance()) 
+print()
+print(obj1.deposit(100))
+print(obj1.get_balance())
+'''
+
+'''
+A @classmethod to update global interest_rate.
+
+A @staticmethod to validate account numbers.
+'''
+'''
+#A @classmethod to update global interest_rate.
+class BankAccount:
+    interest_rate = 1.04
+    def __init__(self,balance):
+        self.balance = balance
+
+    def get_balance(self):
+        return f"balance is : {self.balance}"
+
+    def deposit(self,add):
+        self.balance = self.balance + add 
+
+    def withdraw(self, sub):
+        self.balance = self.balance - sub
+
+#    @classmethod
+#    def modify_balance(cls,balance):
+#        balance = cls.interest_rate*balance 
+    
+    @classmethod
+    def update_interest_rate(cls, new_rate):
+        cls.interest_rate = new_rate
+
+obj1 = BankAccount(1000)
+print(obj1.get_balance()) 
+print()
+print(obj1.deposit(100))
+print(obj1.get_balance())
+#print(obj1.modify_balance())
+print(obj1.get_balance())
+
+#As we can see below without creating instances we modified class variables
+print(f"Default Interest Rate: {BankAccount.interest_rate}")
+
+# Update interest rate for all accounts
+BankAccount.update_interest_rate(1.05)
+
+print(f"Updated Interest Rate: {BankAccount.interest_rate}")
+
+'''
+
+'''
+#A @staticmethod to validate account numbers.
+
+class BankAccount:
+    interest_rate = 1.04
+    def __init__(self,balance):
+        self.balance = balance
+
+    def get_balance(self):
+        return f"balance is : {self.balance}"
+
+    def deposit(self,add):
+        self.balance = self.balance + add 
+
+    def withdraw(self, sub):
+        self.balance = self.balance - sub
+
+#    @classmethod
+#    def modify_balance(cls,balance):
+#        balance = cls.interest_rate*balance 
+    
+    @classmethod
+    def update_interest_rate(cls, new_rate):
+        cls.interest_rate = new_rate
+
+    @staticmethod
+    def validate_account_number(acc_num):
+        if acc_num % 2 == 0:
+            return True
+        else:
+            return False 
+
+obj1 = BankAccount(1000)
+print(obj1.get_balance()) 
+print()
+print(obj1.deposit(100)) #It gives None as we are not returning anything
+print(obj1.get_balance())
+#print(obj1.modify_balance())
+print(obj1.get_balance())
+
+#As we can see below without creating instances we modified class variables
+print(f"Default Interest Rate: {BankAccount.interest_rate}")
+
+# Update interest rate for all accounts
+BankAccount.update_interest_rate(1.05)
+
+print(f"Updated Interest Rate: {BankAccount.interest_rate}")
+
+print(BankAccount.validate_account_number(1224))
+
+'''
+
+
+
+
+
+
+
+'''
+🎯 Mini Project:
+☑ Employee Payroll System - Use class methods to apply salary increment.
+'''
+
+
+
