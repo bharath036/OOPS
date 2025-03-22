@@ -337,7 +337,7 @@ s1.parents()
 
 #Multilevel inheritance : features of base class and derived class are further inherited into the new derieved class. 
 #Similar relationship to a child and a grandfather
-
+'''
 #Base class 
 class Grandfather:
     def __init__(self,grandfathername):
@@ -368,7 +368,7 @@ class Son(Father):
 s1 = Son('Prince','Rampal','Lal mani')
 print(s1.fathername)
 s1.print_name()
-
+'''
 #Hierarchical inheritance:
 #When more than one derived class are created from a single base this
 # type of inheritance is called hierarchical inheritance. In this program, 
@@ -406,3 +406,131 @@ object.func2()
 '''
 
 #Python super()
+'''
+In python., super() is used to refer the parent class or superclass.It allows us to call
+methods defined in the superclass from sub class to extend and customize the functionality 
+inherited from parent class.
+
+A method from parent class can be called in python using super() function. It's typical practice
+in oops to call the methods from super class and enable method overidding and inheritance.
+'''
+
+'''
+class Emp:
+    def __init__(self,id,name,Add):
+        self.id = id 
+        self.name = name 
+        self.Add = Add 
+
+#class freelace inherits EMP
+class Freelance(Emp):
+    def __init__(self, id, name, Add, Email):
+        super().__init__(id, name, Add)
+        self.Email = Email
+
+#creating object 
+Emp1 = Freelance(103,'Suraj','Noida','kk@gmail.com')
+print("The id is:", Emp1.id)
+print("The name is", Emp1.name)
+
+Difference between super() and super 
+super(): This is the function call that returns a proxy object to the superclass,
+allowing you to call its methods.
+super: This is the actual built-in function or type itself. Without the parentheses 
+and subsequent method call, it’s just a reference to the function and does nothing on its own.
+'''
+
+#Method overriding
+'''
+Method overriding is the ability that allows a subclass to provide specific implementation
+of a method that is already provided by one of its super-classes.
+'''
+'''
+# Python program to demonstrate 
+# calling the parent's class method 
+# inside the overridden method 
+class Parent(): 
+    
+    def show(self): 
+        print("Inside Parent") 
+        
+class Child(Parent): 
+    
+    def show(self): 
+        
+        # Calling the parent's class 
+        # method 
+        Parent.show(self) 
+        print("Inside Child") 
+        
+# Driver's code 
+obj = Child() 
+obj.show() 
+
+'''
+#Using super keyword
+'''
+# Python program to demonstrate 
+# calling the parent's class method 
+# inside the overridden method using 
+# super() 
+class Parent(): 
+    
+    def show(self): 
+        print("Inside Parent") 
+        
+class Child(Parent): 
+    
+    def show(self): 
+        
+        # Calling the parent's class 
+        # method 
+        super().show() 
+        print("Inside Child") 
+        
+# Driver's code 
+obj = Child() 
+obj.show() 
+'''
+'''
+# Program to define the use of super() 
+# function in multiple inheritance 
+class GFG1: 
+    def __init__(self): 
+        print('HEY !!!!!! GfG I am initialised(Class GEG1)') 
+    
+    def sub_GFG(self, b): 
+        print('Printing from class GFG1:', b) 
+    
+# class GFG2 inherits the GFG1 
+class GFG2(GFG1): 
+    def __init__(self): 
+        print('HEY !!!!!! GfG I am initialised(Class GEG2)') 
+        super().__init__() 
+    
+    def sub_GFG(self, b): 
+        print('Printing from class GFG2:', b) 
+        super().sub_GFG(b + 1) 
+    
+# class GFG3 inherits the GFG1 ang GFG2 both 
+class GFG3(GFG2): 
+    def __init__(self): 
+        print('HEY !!!!!! GfG I am initialised(Class GEG3)') 
+        super().__init__() 
+    
+    def sub_GFG(self, b): 
+        print('Printing from class GFG3:', b) 
+        super().sub_GFG(b + 1) 
+    
+    
+# main function 
+if __name__ == '__main__': 
+    
+    # created the object gfg 
+    gfg = GFG3() 
+    
+    # calling the function sub_GFG3() from class GHG3 
+    # which inherits both GFG1 and GFG2 classes 
+    gfg.sub_GFG(10) 
+
+'''
