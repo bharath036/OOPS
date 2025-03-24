@@ -535,3 +535,130 @@ if __name__ == '__main__':
 
 '''
 
+#Polymorphism
+'''
+#Duck typing
+#dynamic typing
+print(len("Hello"))  # String length
+print(len([1, 2, 3]))  # List length
+
+print(max(1, 3, 2))  # Maximum of integers
+print(max("a", "z", "m"))  # Maximum in strings
+
+
+#Operator overloading
+means giving extended meaning beyond their predefined operational meaning
+ + is used to add 2 integers as well as join 2 strings and merge two lists
+
+Suppose if we want to add two objects using '+' ., it throws an error
+as compiler don't know how to add 2 objects. for this we define a method for
+an operator and that process is called operator overloading
+
+To perform operator overloading, python provides some special functions or magic 
+functions that is automatically called when it is associated with that particular 
+operator.
+Ex: when we use + operator, the magic method __add__ is automatically invoked in which
+the operation for + operator is defined.
+
+Ex:--WSee the below example
+'''
+
+'''
+class A:
+    def __init__(self,a):
+        self.a = a 
+
+    #adding two objects
+    def __add__(self, o):
+        return self.a + o.a 
+    
+obj1 = A(1)
+obj2 = A(2)
+obj3 = A('Geeks')
+obj4 = A('For')
+
+print(obj1+obj2)
+print(obj3+obj4)
+
+print(obj1.__add__(obj2))
+
+https://www.geeksforgeeks.org/operator-overloading-in-python/
+'''
+
+#Polymorphism
+'''
+Polymorphism allows methods in different classes to share the same
+name but perform distinct tasks.
+'''
+
+'''
+class Shape:
+    def area(self):
+        return "undefined"
+
+class Rectangle(Shape):
+    def __init__(self,a,b):
+        self.a = a
+        self.b = b
+
+    def area(self):
+        return self.a*self.b 
+    
+class Circle(Shape):
+    def __init__(self,radius):
+        self.radius = radius 
+
+    def area(self):
+        return 3.14*self.radius*self.radius 
+    
+shapes = [Rectangle(1,2), Circle(4)]
+for shape in shapes:
+    print(shape.area())
+
+'''
+
+#Types of Polymorphism
+'''
+1.Compile-time Polymorphism
+2.Runtime Polymorphism
+
+Duck Typing: If it acts like a duck, it’s a duck! Python doesn’t check the type, just the behavior.
+
+Dynamic Typing: A variable can hold anything and can change its type as needed. Python figures it out on the fly.
+
+'''
+
+#Tasks    
+
+'''
+🎯 Tasks (Push to GitHub):
+☑ Create a Vehicle class with move() method.
+☑ Inherit it in Car class and override move().
+☑ Implement multiple inheritance with Person and Employee.
+'''
+
+class Vehicle:
+    def move(self):
+        print("Parent class move method")
+
+class Car(Vehicle):
+    def move(self):
+        return f"Car class move method"
+
+obj1 = Car()
+print(obj1.move())
+
+class Person:
+    def fun(self):
+        return f"Person class"
+    
+class Employee:
+    def fun1(self):
+        return f"Employee class"
+
+class Child(Person,Employee):
+    def fun2(self):
+        print("Child class")
+
+object1 = Child()
+print(object1.fun())
