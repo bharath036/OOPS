@@ -636,7 +636,7 @@ Dynamic Typing: A variable can hold anything and can change its type as needed. 
 ☑ Inherit it in Car class and override move().
 ☑ Implement multiple inheritance with Person and Employee.
 '''
-
+'''
 class Vehicle:
     def move(self):
         print("Parent class move method")
@@ -661,4 +661,88 @@ class Child(Person,Employee):
         print("Child class")
 
 object1 = Child()
-print(object1.fun())
+print(object1.fun())'
+'''
+
+
+'''
+"""
+📌 POLYMORPHISM IN PYTHON
+Polymorphism means "many forms". It allows objects of different classes to be treated as objects of a common super class.
+Python achieves polymorphism through:
+1. Method Overloading (Compile-Time Polymorphism)
+2. Method Overriding (Run-Time Polymorphism)
+
+=========================================================
+1️⃣ COMPILE-TIME POLYMORPHISM (Method Overloading)
+- Occurs when multiple methods with the same name exist but differ in:
+  - Number of parameters
+  - Type of parameters
+- Python does not support method overloading directly.
+- We can achieve similar behavior by using default arguments or variable-length arguments (*args).
+
+✅ EXAMPLE:
+class Example:
+    def display(self, a=None, b=None):
+        if a is not None and b is not None:
+            print(f"Two arguments: {a} and {b}")
+        elif a is not None:
+            print(f"One argument: {a}")
+        else:
+            print("No arguments")
+
+obj = Example()
+obj.display()         # No arguments
+obj.display(5)        # One argument
+obj.display(5, 10)    # Two arguments
+
+=========================================================
+2️⃣ RUN-TIME POLYMORPHISM (Method Overriding)
+- Occurs when a derived class provides a specific implementation of a method that is already provided by its parent class.
+- Python supports method overriding through inheritance.
+- Method resolution happens at run time.
+
+✅ EXAMPLE:
+class Animal:
+    def speak(self):
+        print("Some sound")
+
+class Dog(Animal):
+    def speak(self):
+        print("Bark")
+
+class Cat(Animal):
+    def speak(self):
+        print("Meow")
+
+def make_sound(animal):
+    animal.speak()
+
+dog = Dog()
+cat = Cat()
+
+make_sound(dog)  # Bark
+make_sound(cat)  # Meow
+
+=========================================================
+🔥 KEY POINTS TO REMEMBER:
+1. Compile-Time Polymorphism:
+   - Achieved through method overloading (Python does not support it directly).
+   - Can be simulated using default or variable arguments.
+
+2. Run-Time Polymorphism:
+   - Achieved through method overriding.
+   - The actual method to be called is determined at runtime.
+
+3. Duck Typing:
+   - Related to polymorphism.
+   - If an object behaves like a duck (has a quack method), it is treated as a duck.
+
+🎯 POLYMORPHISM IN A NUTSHELL:
+- Enables flexibility and reusability.
+- Same method name, different functionalities.
+- Method Overloading (Compile-Time) and Method Overriding (Run-Time) are key types.
+- Duck Typing is a practical application of polymorphism in Python.
+"""
+
+'''
