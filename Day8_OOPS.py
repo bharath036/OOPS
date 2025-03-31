@@ -14,5 +14,5 @@
 
 CBVs in Django
 
-GitHub Repo: [Your Repo Link]
+GitHub Repo: [Your Repo Link]  
 '''
